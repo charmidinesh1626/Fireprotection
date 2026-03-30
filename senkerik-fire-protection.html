@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senkerik Fire Protection | Niagara Falls, Ontario</title>
+<meta name="description" content="Senkerik Fire Protection provides fire inspections, certifications, equipment and 24/7 emergency service in Niagara Falls and the Niagara Peninsula.">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #111111;
+    --dark: #1a1a1a;
+    --green: #2e7d32;
+    --green-light: #4caf50;
+    --green-pale: #e8f5e9;
+    --white: #ffffff;
+    --gray: #f5f5f5;
+    --text: #333333;
+    --muted: #777777;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Open Sans', sans-serif; color: var(--text); background: var(--white); }
+  h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; font-weight: 700; }
+
+  /* TOPBAR */
+  .topbar { background: var(--black); color: #aaa; display: flex; justify-content: space-between; align-items: center; padding: 8px 40px; font-size: 12px; }
+  .topbar a { color: var(--green-light); text-decoration: none; }
+  .topbar a:hover { text-decoration: underline; }
+
+  /* HEADER */
+  .header { background: var(--dark); padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--green); position: sticky; top: 0; z-index: 1000; }
+  .logo-wrap { display: flex; flex-direction: column; }
+  .logo-name { font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; color: var(--white); letter-spacing: 3px; line-height: 1; }
+  .logo-name span { color: var(--green-light); }
+  .logo-tag { font-size: 10px; color: #888; letter-spacing: 5px; margin-top: 3px; }
+  .header-right { text-align: right; }
+  .emergency-label { color: var(--green-light); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; }
+  .phone-number { color: var(--white); font-family: 'Oswald', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+
+  /* NAV */
+  nav { background: var(--green); display: flex; flex-wrap: wrap; }
+  nav a { color: var(--white); text-decoration: none; padding: 14px 24px; font-size: 13px; font-weight: 600; font-family: 'Oswald', sans-serif; letter-spacing: 1px; text-transform: uppercase; border-right: 1px solid rgba(255,255,255,0.15); transition: background 0.2s; display: block; }
+  nav a:hover, nav a.active { background: #1b5e20; }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* HERO */
+  .hero { background: var(--dark); color: var(--white); padding: 70px 40px; text-align: center; border-bottom: 4px solid var(--green); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(46,125,50,0.03) 40px, rgba(46,125,50,0.03) 80px); }
+  .hero-badge { display: inline-block; background: var(--green); color: var(--white); font-size: 11px; font-family: 'Oswald', sans-serif; letter-spacing: 2px; padding: 5px 16px; border-radius: 2px; margin-bottom: 20px; }
+  .hero h1 { font-size: 48px; font-weight: 700; color: var(--white); letter-spacing: 2px; margin-bottom: 8px; position: relative; }
+  .hero h1 span { color: var(--green-light); }
+  .hero p { font-size: 16px; color: #bbb; max-width: 580px; margin: 0 auto 30px; line-height: 1.7; position: relative; }
+  .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .btn { padding: 14px 32px; font-size: 14px; font-family: 'Oswald', sans-serif; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; border: 2px solid transparent; }
+  .btn-green { background: var(--green); color: var(--white); border-color: var(--green); }
+  .btn-green:hover { background: #1b5e20; border-color: #1b5e20; }
+  .btn-white { background: transparent; color: var(--white); border-color: var(--white); }
+  .btn-white:hover { background: var(--white); color: var(--dark); }
+
+  /* LAYOUT */
+  .two-col { display: grid; grid-template-columns: 1fr 340px; gap: 0; }
+  .main-col { padding: 36px 40px; }
+  .side-col { background: var(--gray); padding: 28px 20px; border-left: 1px solid #e0e0e0; }
+
+  /* SECTIONS */
+  .sec-title { font-family: 'Oswald', sans-serif; font-size: 20px; color: var(--green); border-bottom: 2px solid var(--green-pale); padding-bottom: 8px; margin: 28px 0 14px; }
+  .sec-title:first-child { margin-top: 0; }
+  p.body { font-size: 14px; line-height: 1.9; color: #444; margin-bottom: 12px; }
+  ul.dotlist { list-style: none; padding: 0; margin-bottom: 12px; }
+  ul.dotlist li { font-size: 14px; color: #444; padding: 5px 0 5px 18px; position: relative; line-height: 1.5; }
+  ul.dotlist li::before { content: ''; width: 8px; height: 8px; background: var(--green); border-radius: 50%; position: absolute; left: 0; top: 9px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .badge { background: var(--green-pale); color: #1b5e20; font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; }
+
+  /* SIDEBAR CARDS */
+  .s-card { background: var(--dark); color: var(--white); border-radius: 4px; padding: 18px; margin-bottom: 14px; text-align: center; }
+  .s-card h3 { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--green-light); margin-bottom: 5px; }
+  .s-card p { font-size: 12px; color: #aaa; line-height: 1.6; }
+  .s-card.green-card { background: var(--green); }
+  .s-card.green-card h3 { color: var(--white); }
+  .s-card.green-card p { color: #c8e6c9; }
+  .contact-box { background: var(--white); border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
+  .contact-box-head { background: var(--dark); color: var(--white); font-family: 'Oswald', sans-serif; font-size: 14px; letter-spacing: 1px; padding: 12px 16px; }
+  .contact-box-body { padding: 16px; }
+  .contact-box-body p { font-size: 13px; color: #444; line-height: 2; }
+  .contact-box-body a { color: var(--green); font-weight: 600; text-decoration: none; }
+  .contact-box-body strong { color: var(--dark); }
+  .emerg-tag { color: var(--green); font-weight: 700; font-size: 13px; }
+
+  /* FULL WIDTH SECTION */
+  .full-sec { padding: 40px; }
+  .full-sec h1 { font-size: 28px; color: var(--green); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 3px solid var(--green-pale); }
+
+  /* HIGHLIGHT BOX */
+  .hl-box { background: var(--green-pale); border-left: 5px solid var(--green); padding: 18px 20px; border-radius: 0 6px 6px 0; margin: 20px 0; }
+  .hl-box p { font-size: 14px; color: #1b5e20; line-height: 1.9; }
+
+  /* STATS */
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+  .stat { background: var(--dark); border-radius: 4px; padding: 24px 16px; text-align: center; }
+  .stat .num { font-family: 'Oswald', sans-serif; font-size: 36px; color: var(--green-light); }
+  .stat .lbl { font-size: 12px; color: #aaa; margin-top: 4px; line-height: 1.4; }
+
+  /* CARDS GRID */
+  .cards2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 20px; }
+  .cards3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
+  .card { background: var(--white); border: 1px solid #e0e0e0; border-left: 4px solid var(--green); border-radius: 0 6px 6px 0; padding: 20px; }
+  .card .icon { font-size: 24px; margin-bottom: 10px; }
+  .card h3 { font-family: 'Oswald', sans-serif; font-size: 16px; color: var(--dark); margin-bottom: 6px; }
+  .card p { font-size: 13px; color: #555; line-height: 1.6; }
+  .prod-card { background: var(--dark); color: var(--white); border-radius: 4px; padding: 20px 16px; text-align: center; }
+  .prod-card .icon { font-size: 26px; margin-bottom: 8px; }
+  .prod-card p { font-size: 13px; color: #ccc; }
+
+  /* CTA BAR */
+  .cta-bar { background: var(--dark); border-radius: 4px; padding: 22px 28px; margin-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; }
+  .cta-bar p { color: var(--white); font-family: 'Oswald', sans-serif; font-size: 18px; }
+  .cta-bar span { color: var(--green-light); }
+
+  /* CONTACT PAGE */
+  .contact-layout { display: grid; grid-template-columns: 1fr 360px; }
+  .form-area { padding: 40px; }
+  .form-area h1 { font-size: 26px; color: var(--green); margin-bottom: 8px; }
+  .form-area > p { font-size: 14px; color: var(--muted); margin-bottom: 24px; line-height: 1.7; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1.5px solid #ddd; border-radius: 4px; font-size: 14px; font-family: 'Open Sans', sans-serif; transition: border-color 0.2s; background: var(--white); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--green); }
+  .form-group textarea { height: 110px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .submit-btn { width: 100%; background: var(--green); color: var(--white); border: none; padding: 14px; font-size: 15px; font-family: 'Oswald', sans-serif; letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
+  .submit-btn:hover { background: #1b5e20; }
+  .success-msg { background: var(--green-pale); border: 1px solid var(--green); color: #1b5e20; padding: 14px; border-radius: 4px; font-size: 14px; font-weight: 600; display: none; margin-top: 14px; }
+  .payment-row { margin-top: 20px; }
+  .payment-row p { font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .pay-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .pay-tag { background: var(--dark); color: var(--white); font-size: 11px; padding: 5px 12px; border-radius: 3px; font-weight: 600; }
+
+  /* CONTACT INFO SIDE */
+  .info-side { background: var(--gray); padding: 40px 28px; border-left: 1px solid #e0e0e0; }
+  .map-box { background: #c8e6c9; border-radius: 6px; height: 150px; display: flex; align-items: center; justify-content: center; color: #1b5e20; font-size: 14px; font-weight: 600; text-align: center; padding: 14px; margin-bottom: 24px; border: 1px solid #a5d6a7; line-height: 1.6; }
+  .info-block { margin-bottom: 20px; }
+  .info-block h3 { font-family: 'Oswald', sans-serif; font-size: 13px; color: var(--green); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+  .info-block p { font-size: 14px; color: #444; line-height: 1.9; }
+  .info-block a { color: var(--green); font-weight: 600; text-decoration: none; }
+  .info-block a:hover { text-decoration: underline; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+  /* FOOTER */
+  footer { background: var(--black); border-top: 4px solid var(--green); padding: 40px 40px 20px; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; margin-bottom: 30px; }
+  footer h4 { font-family: 'Oswald', sans-serif; font-size: 14px; color: var(--green-light); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  footer p, footer a { font-size: 13px; color: #888; line-height: 2; text-decoration: none; display: block; }
+  footer a:hover { color: var(--green-light); }
+  .footer-logo { font-family: 'Oswald', sans-serif; font-size: 22px; color: var(--white); letter-spacing: 2px; margin-bottom: 8px; }
+  .footer-logo span { color: var(--green-light); }
+  .footer-bottom { border-top: 1px solid #222; padding-top: 16px; text-align: center; }
+  .footer-bottom p { font-size: 12px; color: #555; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .topbar { flex-direction: column; gap: 4px; padding: 8px 20px; text-align: center; }
+    .header { flex-direction: column; gap: 10px; padding: 16px 20px; text-align: center; }
+    .logo-name { font-size: 22px; }
+    .phone-number { font-size: 22px; }
+    nav a { padding: 12px 16px; font-size: 12px; }
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 30px; }
+    .two-col { grid-template-columns: 1fr; }
+    .side-col { border-left: none; border-top: 1px solid #e0e0e0; }
+    .main-col { padding: 24px 20px; }
+    .full-sec { padding: 24px 20px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .cards2 { grid-template-columns: 1fr; }
+    .cards3 { grid-template-columns: repeat(2, 1fr); }
+    .contact-layout { grid-template-columns: 1fr; }
+    .form-area { padding: 24px 20px; }
+    .info-side { padding: 24px 20px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    footer { padding: 30px 20px 16px; }
+    .cta-bar { flex-direction: column; text-align: center; padding: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <span>Serving Niagara Peninsula &amp; Surrounding Areas &nbsp;|&nbsp; Mon–Fri 8:00am–3:30pm</span>
+  <a href="mailto:contact@senkerikfire.com">contact@senkerikfire.com</a>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo-wrap">
+    <div class="logo-name">SENKERIK <span>FIRE</span>PROTECTION</div>
+    <div class="logo-tag">NIAGARA FALLS, ONTARIO</div>
+  </div>
+  <div class="header-right">
+    <div class="emergency-label">⚡ 24/7 Emergency Service</div>
+    <div class="phone-number"><a href="tel:9053574909" style="color:#fff;text-decoration:none;">905-357-4909</a></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="active" onclick="show('home',this);return false;">Home</a>
+  <a href="#" onclick="show('about',this);return false;">About Us</a>
+  <a href="#" onclick="show('services',this);return false;">Services</a>
+  <a href="#" onclick="show('products',this);return false;">Products</a>
+  <a href="#" onclick="show('contact',this);return false;">Contact Us</a>
+</nav>
+
+<!-- ======================== HOME ======================== -->
+<div class="page active" id="home">
+  <div class="hero">
+    <div class="hero-badge">Certified Fire Inspector (CFI)</div>
+    <h1>SENKERIK <span>FIRE</span> PROTECTION</h1>
+    <p>Inspections, Certificates &amp; Equipment for the Niagara Peninsula — Professional fire protection for commercial &amp; industrial properties.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn btn-green" onclick="show('contact',document.querySelectorAll('nav a')[4]);return false;">Get a Free Quote</a>
+      <a href="#" class="btn btn-white" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">Our Services</a>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="main-col">
+      <div class="sec-title">Senkerik Fire Protection: Protecting Niagara Businesses</div>
+      <p class="body">Senkerik Fire Protection wants security for your commercial or industrial property in the Niagara Peninsula and surrounding area. Follow the fire laws that help keep your residents safe in their apartments. Protect your customers, employees and equipment with a fire protection system. Fire Inspection Services helps you save lives and valuables from fire in a variety of settings, including:</p>
+      <ul class="dotlist">
+        <li>Condos &amp; apartment buildings</li>
+        <li>Hotels &amp; motels</li>
+        <li>Management companies &amp; private businesses</li>
+        <li>Commercial properties</li>
+        <li>Industrial facilities &amp; factories</li>
+      </ul>
+      <div class="sec-title">Inspections &amp; Installations from Certified Specialists</div>
+      <p class="body">Senkerik Fire Protection in Niagara Falls helps keep our clients safe by bringing their properties up to code and testing to determine that your existing fire protection systems function correctly. Call our fully certified staff for the best in fire safety services, including:</p>
+      <ul class="dotlist">
+        <li>Fire safety inspections</li>
+        <li>Fire safety certification</li>
+        <li>Fire protection equipment installation</li>
+      </ul>
+      <div class="sec-title">Free Estimates, Repairs &amp; 24-Hour Emergency Service</div>
+      <p class="body">Make sure your fire protection equipment, including emergency lighting, sprinklers and alarms work when you need them most. Professional, reliable and fully certified, Senkerik Fire Protection repairs all brands of fire protection products. Call for an appointment and free estimate. Senkerik responds quickly when you need us unexpectedly — 24 hours a day, even on weekends.</p>
+      <div class="sec-title">Promotions &amp; Special Offers</div>
+      <ul class="dotlist">
+        <li>Complete fire protection services</li>
+        <li>Free estimates</li>
+        <li>24-hour emergency service</li>
+      </ul>
+      <div class="sec-title">Specialties</div>
+      <ul class="dotlist">
+        <li>Fire protection inspections</li>
+        <li>Kitchen Suppression Systems</li>
+        <li>Fire extinguishers</li>
+        <li>Fire alarms</li>
+        <li>Equipment &amp; Sprinklers</li>
+      </ul>
+      <div class="sec-title">Professional Affiliations</div>
+      <div class="badges">
+        <span class="badge">✓ Certified Fire Inspector (CFI)</span>
+        <span class="badge">✓ Niagara Falls Chamber of Commerce</span>
+        <span class="badge">✓ Free Estimates Available</span>
+        <span class="badge">✓ 24-Hour Emergency Service</span>
+      </div>
+    </div>
+    <div class="side-col">
+      <div class="s-card">
+        <h3>Safety is Our Only Job</h3>
+        <p>Dedicated exclusively to fire protection for Niagara businesses and residents.</p>
+      </div>
+      <div class="s-card green-card">
+        <h3>Best Products</h3>
+        <p>Only the most respected manufacturers — Mircom™ &amp; Buckeye.</p>
+      </div>
+      <div class="s-card">
+        <h3>Our Mission</h3>
+        <p>Keeping Niagara neighbourhood businesses safe from fire.</p>
+      </div>
+      <div class="s-card green-card">
+        <h3>Call Us 24/7</h3>
+        <p><strong style="color:#fff;font-size:18px;">905-357-4909</strong><br>When you need Emergency Service</p>
+      </div>
+      <div class="contact-box">
+        <div class="contact-box-head">Contact Us Today</div>
+        <div class="contact-box-body">
+          <p><strong>Address</strong><br>Unit 4 5743 Thorold Stone Rd.<br>Niagara Falls, Ontario L2J 1A2</p>
+          <p><strong>Phone</strong><br><a href="tel:9053574909">905-357-4909</a></p>
+          <p><strong>Fax</strong><br>905-357-4160</p>
+          <p><strong>Email</strong><br><a href="mailto:contact@senkerikfire.com">contact@senkerikfire.com</a></p>
+          <p><strong>Hours</strong><br>Mon–Fri: 8:00am – 3:30pm<br><span class="emerg-tag">24/7 Emergency Available</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== ABOUT ======================== -->
+<div class="page" id="about">
+  <div class="full-sec">
+    <h1>Keeping Niagara Neighbourhood Businesses Safe</h1>
+    <div class="hl-box">
+      <p>Senkerik Fire Protection is serious about our mission: keeping our commercial and industrial neighbors in the Niagara Peninsula and surrounding area safe from fire. Locally owned and operated, Senkerik Fire Protection is committed to making sure your buildings meet all fire protection codes and contain all the fire protection equipment you need in an emergency.</p>
+    </div>
+    <div class="stats-row">
+      <div class="stat"><div class="num">25+</div><div class="lbl">Years Industry Experience</div></div>
+      <div class="stat"><div class="num">8+</div><div class="lbl">Years as Senkerik Fire Protection</div></div>
+      <div class="stat"><div class="num">500+</div><div class="lbl">Clients Protected</div></div>
+    </div>
+    <div class="sec-title" style="color:var(--green);font-family:'Oswald',sans-serif;font-size:20px;border-bottom:2px solid var(--green-pale);padding-bottom:8px;margin-bottom:14px;">Call Senkerik Fire Protection for Experienced Service</div>
+    <p class="body">Senkerik customers expect safe buildings for their employees, clients, equipment and intellectual property. Knowing our staff works hard to provide you with fully certified and reliable fire protection helps you and us sleep more easily when our workday is done.</p>
+    <p class="body">In business for over 8 years as Senkerik Fire Protection, our experienced staff backs up our professional services with 25 years in the fire protection industry.</p>
+    <div class="cards2">
+      <div class="card"><div class="icon">🏆</div><h3>25 Years of Experience</h3><p>Decades of hands-on fire protection expertise brought to every single job we do.</p></div>
+      <div class="card"><div class="icon">🏠</div><h3>Locally Owned &amp; Operated</h3><p>Proudly serving the Niagara Peninsula as a trusted, local independent business.</p></div>
+      <div class="card"><div class="icon">✅</div><h3>Fully Certified Staff</h3><p>Certified Fire Inspector (CFI) — proud member of the Niagara Falls Chamber of Commerce.</p></div>
+      <div class="card"><div class="icon">🚨</div><h3>24/7 Emergency Service</h3><p>Available around the clock — days, nights, weekends. Call 905-357-4909 anytime.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SERVICES ======================== -->
+<div class="page" id="services">
+  <div class="full-sec">
+    <h1>Fire Protection Inspections, Certifications &amp; Repairs</h1>
+    <p class="body">You built your business to succeed so you want what it takes to safeguard your investment, clients and employees against a fire's devastation. Senkerik Fire Protection is your ally on the Niagara Peninsula in protecting your property against fire. Book an appointment for proactive services.</p>
+    <div class="cards2">
+      <div class="card"><div class="icon">🔍</div><h3>Fire Protection Inspections</h3><p>Commercial &amp; industrial fire protection inspections and certifications to keep your property fully compliant with fire codes.</p></div>
+      <div class="card"><div class="icon">🚒</div><h3>Fire Hose &amp; Alarm Tests</h3><p>Thorough fire hose tests and fire alarm inspections carried out by fully certified fire protection specialists.</p></div>
+      <div class="card"><div class="icon">🔧</div><h3>New System Installations</h3><p>New installations or updating your existing fire protection systems gives you the edge on reducing risk. Free estimates available.</p></div>
+      <div class="card"><div class="icon">🛠️</div><h3>Fire System Repairs</h3><p>Repairs on all brands of fire protection equipment by appointment or 24-hour emergency call. We respond fast.</p></div>
+      <div class="card"><div class="icon">🍳</div><h3>Kitchen Suppression Systems</h3><p>Specialized suppression systems designed for commercial kitchens, restaurants, and food service facilities.</p></div>
+      <div class="card"><div class="icon">⚡</div><h3>24-Hour Emergency Service</h3><p>Call us any time — day or night, weekdays or weekends. Senkerik responds quickly when you need us unexpectedly.</p></div>
+    </div>
+    <div class="cta-bar">
+      <p>Free Estimates Available — Call <span>905-357-4909</span></p>
+      <a href="#" class="btn btn-green" onclick="show('contact',document.querySelectorAll('nav a')[4]);return false;">Book an Inspection</a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== PRODUCTS ======================== -->
+<div class="page" id="products">
+  <div class="full-sec">
+    <h1>Fire Protection Systems from Trusted Manufacturers</h1>
+    <p class="body">Senkerik Fire Protection services and repairs all brands of fire protection systems. Yet when you need a new system installed or your old one updated, Senkerik gives you fire protection products from two of the most respected manufacturers in the industry: <strong>Mircom™</strong> and <strong>Buckeye</strong>.</p>
+    <p class="body">From sophisticated systems that protect your intellectual property to reliable conventional alarms, Senkerik sells and installs products that fit your needs. Call us for information, to book an on-site inspection, and request a free estimate for all fire prevention equipment, including:</p>
+    <div class="cards3">
+      <div class="prod-card"><div class="icon">🧯</div><p>Fire Extinguishers</p></div>
+      <div class="prod-card"><div class="icon">🚨</div><p>Fire Alarms</p></div>
+      <div class="prod-card"><div class="icon">💡</div><p>Emergency Lighting</p></div>
+      <div class="prod-card"><div class="icon">💧</div><p>Sprinkler Systems</p></div>
+      <div class="prod-card"><div class="icon">🔥</div><p>Fire Suppression Systems</p></div>
+      <div class="prod-card"><div class="icon">🔋</div><p>Batteries</p></div>
+      <div class="prod-card"><div class="icon">☁️</div><p>Carbon Monoxide Detectors</p></div>
+      <div class="prod-card"><div class="icon">🍳</div><p>Kitchen Hood Systems</p></div>
+      <div class="prod-card"><div class="icon">🏭</div><p>Mircom™ &amp; Buckeye Products</p></div>
+    </div>
+    <div class="cta-bar">
+      <p>Book an on-site inspection &amp; request a <span>free estimate</span></p>
+      <a href="#" class="btn btn-green" onclick="show('contact',document.querySelectorAll('nav a')[4]);return false;">Get Free Estimate</a>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== CONTACT ======================== -->
+<div class="page" id="contact">
+  <div class="contact-layout">
+    <div class="form-area">
+      <h1>Contact Senkerik Fire Protection in Niagara Falls</h1>
+      <p>Find Senkerik Fire Protection on Dunn Street just west of Stanley Avenue in Niagara Falls. Call us for 24-hour emergency services throughout the Niagara Peninsula every day of the week. We answer all email requests promptly.</p>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name *</label><input type="text" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Phone Number *</label><input type="tel" placeholder="905-000-0000" required></div>
+      </div>
+      <div class="form-group"><label>Email Address *</label><input type="email" placeholder="your@email.com" required></div>
+      <div class="form-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">-- Select a service --</option>
+          <option>Fire Extinguisher Supply &amp; Servicing</option>
+          <option>Fire Alarm Installation &amp; Maintenance</option>
+          <option>Fire Safety Inspection &amp; Certification</option>
+          <option>Kitchen Suppression System</option>
+          <option>Fire Suppression System</option>
+          <option>New System Installation</option>
+          <option>Fire System Repair</option>
+          <option>24-Hour Emergency Service</option>
+          <option>Free Estimate / On-site Inspection</option>
+          <option>Other / Not Sure</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message *</label><textarea placeholder="Tell us about your fire protection needs..." required></textarea></div>
+      <button class="submit-btn" onclick="submitForm()">Send Message</button>
+      <div class="success-msg" id="successMsg">✓ Thank you! Your message has been sent. We will contact you shortly.</div>
+      <div class="payment-row">
+        <p>Payment Methods Accepted:</p>
+        <div class="pay-tags">
+          <span class="pay-tag">Cash</span>
+          <span class="pay-tag">Cheque</span>
+          <span class="pay-tag">Interac</span>
+          <span class="pay-tag">Mastercard</span>
+          <span class="pay-tag">Visa</span>
+        </div>
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="map-box">📍 Unit 4 5743 Thorold Stone Rd.<br>Niagara Falls, Ontario L2J 1A2</div>
+      <div class="info-block"><h3>Address</h3><p>Unit 4 5743 Thorold Stone Rd.<br>Niagara Falls, Ontario L2J 1A2</p></div>
+      <div class="info-block"><h3>Phone</h3><p>Main: <a href="tel:9053574909">905-357-4909</a><br>Fax: 905-357-4160</p></div>
+      <div class="info-block"><h3>Email</h3><p><a href="mailto:contact@senkerikfire.com">contact@senkerikfire.com</a></p></div>
+      <div class="info-block"><h3>Opening Hours</h3><p>Monday–Friday: 8:00am – 3:30pm<br><strong style="color:var(--green);">24/7 Emergency Service Available</strong></p></div>
+      <div class="info-block">
+        <h3>Service Areas</h3>
+        <div class="area-tags">
+          <span class="badge">Niagara Peninsula</span>
+          <span class="badge">Niagara Falls</span>
+          <span class="badge">St. Catharines</span>
+          <span class="badge">Fort Erie</span>
+          <span class="badge">Hamilton</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">SENKERIK <span>FIRE</span>PROTECTION</div>
+      <p>Locally owned &amp; operated. Protecting Niagara Peninsula businesses and residents for over 8 years with professional, certified fire protection services.</p>
+      <div class="badges" style="margin-top:12px;">
+        <span class="badge">CFI Certified</span>
+        <span class="badge">Chamber of Commerce</span>
+      </div>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Unit 4 5743 Thorold Stone Rd.</p>
+      <p>Niagara Falls, Ontario L2J 1A2</p>
+      <a href="tel:9053574909">905-357-4909</a>
+      <a href="tel:9053574160">Fax: 905-357-4160</a>
+      <a href="mailto:contact@senkerikfire.com">contact@senkerikfire.com</a>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <a href="#" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">Fire Inspections</a>
+      <a href="#" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">Certifications</a>
+      <a href="#" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">Equipment Repairs</a>
+      <a href="#" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">Kitchen Suppression</a>
+      <a href="#" onclick="show('services',document.querySelectorAll('nav a')[2]);return false;">24/7 Emergency</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright &copy; 2024 Senkerik Fire Protection. All Rights Reserved. | Niagara Falls, Ontario, Canada</p>
+  </div>
+</footer>
+
+<script>
+function show(id, navEl) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function submitForm() {
+  var msg = document.getElementById('successMsg');
+  msg.style.display = 'block';
+  setTimeout(function() { msg.style.display = 'none'; }, 5000);
+}
+</script>
+</body>
+</html>
